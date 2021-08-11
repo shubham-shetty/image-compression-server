@@ -5,7 +5,7 @@ app = Flask(APP_NAME)
 
 @app.route('/')
 def upload_page():
-    
+    return "Hello World"    
 
 
 
