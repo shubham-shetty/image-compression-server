@@ -1,3 +1,4 @@
+import os
 import boto3
 s3 = boto3.client('s3')
 BUCKET_NAME='sss-compressr'
@@ -23,6 +24,7 @@ def upload():
                     Key = filename
                 )
                 msg = "Upload Done ! "
+                os.system(f"rm {filename}")
     return render_template("index2.html",msg =msg)
 
 if __name__ == "__main__":
