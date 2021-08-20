@@ -7,4 +7,13 @@
 {% block content %}
 	<p> Use Compressr to compress your images online. </p>
 	<p> Choose between k-means or PCA algorithm for compression and test it out! </p>
+	
+	<div class="floated_img">
+		<img src="{{ url_for('index', filename='home_page/Compressed_image_with_num_clusters_50.jpg') }}">
+		<p>Description of above image</p>
+	</div>
+	<div class="floated_img">
+		<img src="{{ url_for('index', filename='home_page/Compressed_image_with_num_clusters_100.jpg') }}>
+		<p>Description of above image</p>
+	</div>
 {% endblock %}

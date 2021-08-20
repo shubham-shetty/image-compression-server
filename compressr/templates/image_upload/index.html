@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<p> Use Compressr to compress your images online. </p>
+	<p> Choose between k-means or PCA algorithm for compression and test it out! </p>
+	
+<p>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+                <ul>
+                {% for message in messages %}
+                  <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+          {% endif %}
+        {% endwith %}
+</p>
+{% if filename %}
+        <div>
+                <img src="{{ url_for('image_upload.display_image', filename=filename) }}">
+        </div>
+{% endif %}
+<!--
+<form method="post" action="/" enctype="multipart/form-data">
+    <dl>
+                <p>
+                        <input type="file" name="file" autocomplete="off" required>
+                </p>
+    </dl>
+    <p>
+                <input type="submit" value="Submit">
+        </p>
+</form>
+-->
+<form action="/upload" method="post" enctype="multipart/form-data">
+     <p class="card-text">Choose a file to compress</p>
+        <input type="file" name="file" value="file">
+        <hr>
+   <input type="submit" name="upload" value="Upload" class="btn btn-success">
+</form>
+{{msg}}
+{% endblock %}
+
+
+
