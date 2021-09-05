@@ -35,7 +35,7 @@ def image_upload():
         file.save(os.path.join(os.getcwd(),UPLOAD_FOLDER, filename))
         #print('upload_image filename: ' + filename)
         msg = 'Image successfully uploaded and displayed below'
-        return render_template('image_upload/index.html', filename=filename)
+        return render_template('image_compress/index.html', filename=filename)
     else:
         if not file:
             msg = 'No image selected for uploading'

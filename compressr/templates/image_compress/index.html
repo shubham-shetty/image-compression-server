@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<p> Use Compressr to compress your images online. </p>
+	<p> Choose between k-means or PCA algorithm for compression and test it out! </p>
+	
+<p>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+                <ul>
+                {% for message in messages %}
+                  <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+          {% endif %}
+        {% endwith %}
+</p>
+{% if filename %}
+        <div>
+		<p class="card-text">Original Uploaded Image - </p>
+                <img src="{{ url_for('image_upload.display_image', filename=filename) }}">
+        </div>
+{% endif %}
+<!--
+<form method="post" action="/" enctype="multipart/form-data">
+    <dl>
+                <p>
+                        <input type="file" name="file" autocomplete="off" required>
+                </p>
+    </dl>
+    <p>
+                <input type="submit" value="Submit">
+        </p>
+</form>
+-->
+<form action="/compress">
+     <p class="card-text">Choose which compression algorithm</p>
+     <input type="radio" id="pca"  name="comp_algo" value="PCA">
+     <label for="pca">PCA</label><br>
+     <input type="radio" id="kmeans"  name="comp_algo" value="K-Means">
+     <label for="kmeans">K-Means</label><br>
+     <hr>
+     <label for="k">Enter K value:</label>
+     <input type="text" id="k" name="k" value=""><br>
+   <input type="submit" name="compress" value="Compress" class="btn btn-success">
+</form>
+{{msg}}
+
+{% if comp_filename %}
+        <div>
+                <p class="card-text">Compressed Image - </p>
+                <img src="{{ url_for('image_compress.display__compress_image', filename=comp_filename) }}">
+        </div>
+{% endif %}
+
+{% endblock %}
+
+
+
